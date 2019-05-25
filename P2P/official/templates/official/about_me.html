@@ -112,7 +112,11 @@
             <form action="" method="post" class="set_info">
                 <li>
                     <div class="userImg">
-                        <img src="/media{{ dl_user.img }}" alt="" id='replaceImg'>
+                        {% if not dl_user.img %}
+                            <img src="/static/img/default-user.png" alt="" id='replaceImg'>
+                            {% else %}
+                            <img src="/media{{ dl_user.img }}" alt="" id='replaceImg'>
+                        {% endif %}
                     </div>
                     <input type="file" style="display: none" id="files" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
                 </li>

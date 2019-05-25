@@ -24,7 +24,8 @@
         </div>
         <div class="Input_area">
             <div class="left">
-                <img src="{% static 'images/boy.png' %}" alt="">
+                <img src="/media{{ dl_user.img }}" alt="">
+{#                <img src="{% static 'images/boy.png' %}" alt="">#}
             </div>
             <form action="" method="post" class="MSG" enctype="multipart/form-data">
                 {% csrf_token %}

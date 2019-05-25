@@ -14,7 +14,9 @@ from util.myutil import authuser
 
 def write_TW(request):
     if request.method == 'GET':
-        return render(request, 'petstate/write_TW.html')
+        tel = request.session.get('tel', None)
+        dl_user = User.objects.filter(tel=tel).first()
+        return render(request, 'petstate/write_TW.html', {"dl_user":dl_user})
     if request.method == 'POST':
         obj = dict()
         txt = request.POST.get('textarea')

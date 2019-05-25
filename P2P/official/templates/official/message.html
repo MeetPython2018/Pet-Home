@@ -16,7 +16,11 @@
     <div class="con">
         <div class="header">
             <a href="javaScript:;" class="userImg">
-                <img src="/media{{ dl_user.img }}" alt="">
+                {% if not dl_user.img %}
+                    <img src="/static/img/default-user.png" alt="">
+                    {% else %}
+                    <img src="/media{{ dl_user.img }}" alt="">
+                {% endif %}
             </a>
             <div class="CardTips">
                 <h3>通知</h3>
@@ -38,7 +42,11 @@
             <ul>
                 <li>
                     <div class="p_msg">
-                        <img src="/media{{ dl_user.img }}" alt="">
+                        {% if not dl_user.img %}
+                            <img src="/static/img/default-user.png" alt="">
+                            {% else %}
+                            <img src="/media{{ dl_user.img }}" alt="">
+                        {% endif %}
                         {# 跳至个人主页 #}
                         <a href="{% url 'official:set_info' 0 %}">
                             <b>{{ username }}</b>

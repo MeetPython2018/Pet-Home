@@ -33,7 +33,11 @@
             <li>
                 <a href="" class="img">
                     <div class="userImg">
-                        <img src="/media{{ dl_user.img }}" alt="">
+                        {% if not dl_user.img %}
+                            <img src="/static/img/default-user.png" alt="">
+                            {% else %}
+                            <img src="/media{{ dl_user.img }}" alt="">
+                        {% endif %}
                     </div>
                 </a>
                 <a href="{% url 'official:about_me' %}" class="info">
@@ -43,11 +47,11 @@
             <li>
                 <span>{{ username }}</span>
                 <span>@{{ email }}</span>
-                <p>个性签名......</p>
+                <p>总得写点什么吧......</p>
             </li>
             <li>
-               <span>76 <em>正在关注</em></span>
-               <span style="margin-left: .2rem">6 <em>关注者</em></span>
+               <span>0 <em>正在关注</em></span>
+               <span style="margin-left: .2rem">0 <em>关注者</em></span>
             </li>
         </div>
         <div class="tweet_list">
