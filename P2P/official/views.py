@@ -144,8 +144,10 @@ def lev_message(request, item_id):
     if request.method == 'GET':
         data = Tweet.objects.filter(id=item_id).first()
         a_id = data.a_id
-        uname = User.objects.filter(id=a_id).first()
-        return render(request, 'official/lev_message.html', {"data": data, 'uname': uname.username})
+        uinfo = User.objects.filter(id=a_id).first()
+        tel = request.session.get('tel', None)
+        dl_user = User.objects.filter(tel=tel).first()
+        return render(request, 'official/lev_message.html', {"data": data, 'uinfo': uinfo, 'dl_user':dl_user})
 
 
 # 查看评论处理逻辑

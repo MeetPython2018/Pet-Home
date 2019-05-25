@@ -23,13 +23,13 @@
         <div class="con">
             <div class="userImg">
                 <a href="">
-                    <img src="{% static 'img/boy.png' %}" alt="">
+                     <img src="/media{{ uinfo.img }}" alt="">
                 </a>
                 <div class="line"></div>
             </div>
             <div class="dynamic">
                 <li class="text">
-                    <span class="name">{{ uname }}</span>
+                    <span class="name">{{ uinfo.username }}</span>
                     <span class="time">{{ data.c_time }}</span>
                     <p class="txt">{{ data.con }}</p>
                 </li>
@@ -37,11 +37,15 @@
         </div>
         <div class="touch_you">
             <h3>
-                <span style="color: rgb(101, 119, 134);">回复<a href="">@雨中人</a> </span>
+                <span style="color: rgb(101, 119, 134);">回复<a href="">@{{ uinfo.username }}</a> </span>
             </h3>
             <div class="my_img">
                 <a href="">
-                    <img src="{% static 'img/boy.png' %}" alt="">
+                    {% if not dl_user.img %}
+                        <img src="/static/img/default-user.png" alt="">
+                    {% else %}
+                        <img src="/media{{ dl_user.img }}" alt="">
+                    {% endif %}
                 </a>
             </div>
             <div class="inputs">
